@@ -24,6 +24,14 @@ app.get('/suggestedListings', (req, res) => {
   });
 });
 
+// post request
+
+
+
+// put request
+
+// delete request
+
 app.listen(PORT, (error) => {
   if (error) {
     console.log('Failed Server Connection');
