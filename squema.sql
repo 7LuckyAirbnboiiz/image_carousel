@@ -2,41 +2,63 @@
 
 CREATE SCHEMA listingSchema;
 
-DROP TABLE properties;
+DROP TABLE IF EXISTS properties;
+
+-- CREATE TABLE properties(
+--   propertyId INTEGER,
+--   -- propertyId SERIAL PRIMARY KEY NOT NULL
+-- );
+
+-- DROP TABLE IF EXISTS listings;
 
 CREATE TABLE properties(
   propertyId INTEGER,
-  -- propertyId SERIAL PRIMARY KEY NOT NULL
-);
-
-DROP TABLE listings;
-
-CREATE TABLE listings(
-  listingId INTEGER,
   -- listingId SERIAL PRIMARY KEY NOT NULL,
   img VARCHAR (50),
   superhost BOOLEAN,
   wasLiked BOOLEAN,
-  avgRating INTEGER,
+  avgRating SMALLINT,
   numberOfRatings INTEGER,
-  typeOfRoom VARCHAR (50),
+  numberOfBeds SMALLINT,
+  typeOfRoom VARCHAR (20),
   descrip VARCHAR (100),
   price INTEGER,
 );
 
-DROP TABLE propertyListings;
+DROP TABLE IF EXISTS propertyListings;
 
 CREATE TABLE propertyListings (
   popertyId INTEGER,
   listingId INTEGER,
+  FOREIGN KEY (propertyId) REFERENCES properties(propertyId),
+  FOREIGN KEY (listingId) REFERENCES properties(propertyId),
   -- PRIMARY KEY (propertyId, listingID),
-  FOREIGN KEY (propertyId) REFERENCES property(propertyId) ON UPDATE CASCADE,
-  FOREIGN KEY (listingId) REFERENCES listings(listingId) ON UPDATE CASCADE
+  -- FOREIGN KEY (propertyId) REFERENCES property(propertyId), ON UPDATE CASCADE,
+  -- ON DELETE instead?
+  -- FOREIGN KEY (listingId) REFERENCES listings(listingId) ON UPDATE CASCADE,
 );
+
+-- CREATE TABLE propertyListings (
+--   popertyId INTEGER,
+--   listingId INTEGER,
+--   -- PRIMARY KEY (propertyId, listingID),
+--   FOREIGN KEY (propertyId) REFERENCES property(propertyId) ON UPDATE CASCADE,
+--   -- ON DELETE instead?
+--   FOREIGN KEY (listingId) REFERENCES listings(listingId) ON UPDATE CASCADE,
+-- );
 
 -- need to edit to add some identification of property
 -- GET request
-SELECT * FROM propertyListings WHERE propertyId = 1;
+SELECT * FROM properties WHERE propertyId IN (
+  SELECT * FROM propertyListings WHERE propertyId = 1
+)
+
+-- SELECT * FROM propertyListings WHERE propertyId = 1;
+
+-- SELECT * FROM properties WHERE propertyId = "the ids which were saved";
+
+
+-- SELECT * FROM related_properties WHERE property_id = 1;
 
 --POST request
 INSERT INTO properties (propertyId) VALUES (55);
@@ -47,8 +69,9 @@ INSERT INTO properties (propertyId) VALUES (55);
 -- INSERT INTO listings (superhost) VALUES (true);
 
 -- PATCH request
-UPDATE listings
-SET img = 'some url string',
+UPDATE properties
+SET propertyId = 5,
+    img = 'some url string',
     superhost = false,
     wasLiked = true,
     avgRating = 3,

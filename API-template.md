@@ -3,17 +3,17 @@
 
 <!-- currently database does not reference any propertyId but will probably have to modify -->
 ### Get property info
-  * GET `/api/properties/:propertyId/listings`
+  * GET `/api/properties/:propertyId`
 
 **Path Parameters:**
-  * `id` property id
+  * `propertyId` property id
 
 **Success Status Code:** `200`
 
 **Returns:** JSON
 
 ```json
-    {
+    [{
       "image": "String",
       "superhost": "Boolean",
       "wasLiked": "Boolean",
@@ -22,14 +22,16 @@
       "typeOfRoom": "String",
       "description": "String",
       "price": "Number",
-    }
+    },
+    // x12
+    ]
 ```
 
 ### Add a property => can also use querystring instead of body of request
-  * POST `/api/properties/:propertyId/listings`
+  * POST `/api/properties/:propertyId`
 
 **Path Parameters:**
-  * `id` property id
+  * `propertyId` property id
 
 **Success Status Code:** `201`
 
@@ -37,6 +39,7 @@
 
 ```json
     {
+      "propertyId": "Number",
       "image": "String",
       "superhost": "Boolean",
       "wasLiked": "Boolean",
@@ -45,16 +48,16 @@
       "typeOfRoom": "String",
       "description": "String",
       "price": "Number",
+      "listings": "Array",
     }
 ```
 
 
 ### Update single listing info => can also use querystring instead of body of request
-  * PATCH `/api/properties/:propertyId/listings/:listingId`
+  * PATCH `/api/properties/:propertyId`
 
 **Path Parameters:**
-  * `id` property id
-  * `id` listing id
+  * `property` listing id
 
 **Success Status Code:** `204`
 
@@ -62,6 +65,7 @@
 
 ```json
     {
+      "propertyId": "Number",
       "image": "String",
       "superhost": "Boolean",
       "wasLiked": "Boolean",
@@ -70,39 +74,14 @@
       "typeOfRoom": "String",
       "description": "String",
       "price": "Number",
+      "listings": "Array",
     }
 ```
 
 ### Delete single listing => can also use querystring instead of body of request
-  * DELETE `/api/property/:propertyId/listings/:listingId`
+  * DELETE `/api/properties/:propertyId`
 
 **Path Parameters:**
-  * `id` property id
-  * `id` listing id
+  * `propertyId` property id
 
 **Success Status Code:** `204`
-
-<!-- example for specific change -->
-### update single image of single listing
-  * PATCH `/api/properties/:propertyId/listings/:listingId/image`
-
-**Path Parameters:**
-  * `id` property id
-  * `listingId` listing id
-
-**Success Status Code:** `201`
-
-**Request Body**: Expects JSON with the following keys.
-
-```json
-    {
-      "image": "String",
-      "superhost": "Boolean",
-      "wasLiked": "Boolean",
-      "avgRating": "Number",
-      "numberOfRatings": "Number",
-      "typeOfRoom": "String",
-      "description": "String",
-      "price": "Number",
-        }
-```
