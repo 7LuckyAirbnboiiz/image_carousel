@@ -13,10 +13,26 @@ module.exports = {
       }
     });
   },
+
+  // create listing
+
+  // // update listing
+  // updateListing: (req, res) => {
+  //   // if required information is not given: throw an error
+  //   // User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  //   Listing.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  //     // then
+  //     .then((listings) => {
+  //       res.status(200).send(listings);
+  //     })
+  //       // if that listing doesn't exit
+  //         // throw an error
+  //     // catch error
+  //     .catch((err) => {
+  //       throw (err);
+  //     });
+  // },
+
+  // delete listing
+
 };
-
-// create listing
-
-// update listing
-
-// delete listing

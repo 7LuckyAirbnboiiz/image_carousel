@@ -27,9 +27,4 @@ client/
 db/
 
 # csv file
-
-data.csv
-
-# package-lock
-
-package-lock.json
+*.csv

@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/suggestedListings', { useNewUrlParser: true });
+// used locally
+const mongoUrl = 'mongodb://localhost:27017/suggestedListings';
+
+// used with ec2
+// const morgoUrl = 'mongdb://database/suggestedListings';
+
+mongoose.connect(mongoUrl, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {

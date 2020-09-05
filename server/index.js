@@ -26,9 +26,21 @@ app.get('/suggestedListings', (req, res) => {
 
 // post request
 
-
-
 // put request
+// might need to add individual id of room
+app.put('/suggestedListings', (req, res) => {
+  console.log(req.body);
+  console.log('get put working!');
+  model.updateListing((error, listings) => {
+    if (error) {
+      console.log('server down');
+      res.status(400).send(error);
+    } else {
+      console.log('PUT received!');
+      res.status(200).send(listings);
+    }
+  });
+});
 
 // delete request
 
