@@ -84,8 +84,9 @@ class App extends React.Component {
     //   });
 
     // my get request to postgreSQL database
+    const id = window.location.pathname.split('/')[2];
+    axios.get(`/listing/${id}`)
 
-    axios.get('/listing')
       .then((response) => {
         const suggestedListings = [];
         for (let i = 0; i < response.data.rows.length; i += 1) {

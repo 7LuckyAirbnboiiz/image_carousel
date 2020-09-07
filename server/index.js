@@ -13,7 +13,9 @@ app.use(compression());
 
 const PORT = 3004;
 // app.use('/rooms/:room_id', express.static(path.join(__dirname, '../public')));
-app.use('/rooms/:room_id', expressStaticGzip(path.join(__dirname, '../public')));
+app.use('/rooms/:id', expressStaticGzip(path.join(__dirname, '../public')));
+
+// get request original mongodb
 
 app.get('/suggestedListings', (req, res) => {
   console.log('get req working!');
@@ -28,19 +30,16 @@ app.get('/suggestedListings', (req, res) => {
   });
 });
 
-// TODO: probably need some way to check which property we're looking at /listing/:listing_id
+// new get request for PostgreSQL
 
-// TODO: also need to add to link to client side and might have to change query names
-
-app.get('/listing', (req, res) => {
+app.get('/listing/:id', (req, res) => {
   console.log('get req working!');
-  // postgres.hello();
-  postgres.getListings(5, (err, listings) => {
+  let id = req.params.id;
+  postgres.getListings(id, (err, listings) => {
     if (err) {
       console.log('server down');
       res.status(400).send(err);
     } else {
-      console.log(res.body);
       console.log('Postgres working in server!');
       res.status(200).send(listings);
     }

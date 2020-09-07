@@ -35,8 +35,6 @@ module.exports = {
     });
   },
 
-
-
   // create listing
 
   // // update listing
