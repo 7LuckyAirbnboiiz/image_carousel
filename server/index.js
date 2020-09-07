@@ -3,6 +3,10 @@ const path = require('path');
 const compression = require('compression');
 const expressStaticGzip = require('express-static-gzip');
 const model = require('../db/model.js');
+const postgres = require('../db/PostgreSQL/index.js');
+
+// what to put into url: before my changes
+// http://localhost:3004/rooms/5/
 
 const app = express();
 app.use(compression());
@@ -24,23 +28,42 @@ app.get('/suggestedListings', (req, res) => {
   });
 });
 
-// post request
+// TODO: probably need some way to check which property we're looking at /listing/:listing_id
 
-// put request
-// might need to add individual id of room
-app.put('/suggestedListings', (req, res) => {
-  console.log(req.body);
-  console.log('get put working!');
-  model.updateListing((error, listings) => {
-    if (error) {
+// TODO: also need to add to link to client side and might have to change query names
+
+app.get('/listing', (req, res) => {
+  console.log('get req working!');
+  // postgres.hello();
+  postgres.getListings(5, (err, listings) => {
+    if (err) {
       console.log('server down');
-      res.status(400).send(error);
+      res.status(400).send(err);
     } else {
-      console.log('PUT received!');
+      console.log(res.body);
+      console.log('Postgres working in server!');
       res.status(200).send(listings);
     }
   });
 });
+
+// post request
+
+// put request
+// might need to add individual id of room
+// app.put('/suggestedListings', (req, res) => {
+//   console.log(req.body);
+//   console.log('get put working!');
+//   model.updateListing((error, listings) => {
+//     if (error) {
+//       console.log('server down');
+//       res.status(400).send(error);
+//     } else {
+//       console.log('PUT received!');
+//       res.status(200).send(listings);
+//     }
+//   });
+// });
 
 // delete request
 

@@ -1,5 +1,26 @@
 /* eslint-disable array-callback-return */
+const { Client } = require('pg');
 const Listing = require('./index.js');
+// const conString = require('./PostgreSQL/postgresConfig.js');
+
+// const client = new Client({
+//   connectionString: conString,
+// });
+
+
+
+// client.connect();
+// client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
+//   console.log(err ? err.stack : res.rows[0].message); // Hello World!
+//   client.end();
+// });
+
+// client.query('SELECT * FROM properties WHERE property_id = 1', (err, res) => {
+//   console.log('something works');
+//   console.log(conString);
+//   console.log(res);
+//   client.end();
+// });
 
 module.exports = {
   getListings: (callback) => {
@@ -13,6 +34,8 @@ module.exports = {
       }
     });
   },
+
+
 
   // create listing
 
