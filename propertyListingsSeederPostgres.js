@@ -9,18 +9,18 @@ const createPropertyListing = (i) => {
   // can make the listings be a broader range of other propertyIds
   const propertyId = i;
   const listings = [];
-  const listingId1 = ((i) % 100) + 1;
-  const listingId2 = ((i) % 99) + 1;
-  const listingId3 = ((i) % 98) + 1;
-  const listingId4 = ((i) % 97) + 1;
-  const listingId5 = ((i) % 96) + 1;
-  const listingId6 = ((i) % 95) + 1;
-  const listingId7 = ((i) % 94) + 1;
-  const listingId8 = ((i) % 93) + 1;
-  const listingId9 = ((i) % 92) + 1;
-  const listingId10 = ((i) % 91) + 1;
-  const listingId11 = ((i) % 90) + 1;
-  const listingId12 = ((i) % 89) + 1;
+  const listingId1 = i - 12;
+  const listingId2 = i - 11;
+  const listingId3 = i - 10;
+  const listingId4 = i - 9;
+  const listingId5 = i - 8;
+  const listingId6 = i - 7;
+  const listingId7 = i - 6;
+  const listingId8 = i - 5;
+  const listingId9 = i - 4;
+  const listingId10 = i - 3;
+  const listingId11 = i - 2;
+  const listingId12 = i - 1;
   // const listingId1 = ((i + 1) % (i)) + 1;
   // const listingId2 = ((i + 2) % (i + 1)) + 1;
   // const listingId3 = ((i + 3) % (i + 2)) + 1;
@@ -36,62 +36,62 @@ const createPropertyListing = (i) => {
   // console.log('i', i);
   // console.log('id:', listingId1);
 
-  if (listingId1 < i || listingId1 > 1) {
+  if (i > 13) {
     listings.push(listingId1);
   } else {
     listings.push(1);
   }
-  if (listingId2 < i || listingId2 > 0) {
+  if (i > 13) {
     listings.push(listingId2);
   } else {
     listings.push(2);
   }
-  if (listingId3 < i || listingId3 > 0) {
+  if (i > 13) {
     listings.push(listingId3);
   } else {
     listings.push(3);
   }
-  if (listingId4 < i || listingId4 > 0) {
+  if (i > 13) {
     listings.push(listingId4);
   } else {
     listings.push(4);
   }
-  if (listingId5 < i || listingId5 > 0) {
+  if (i > 13) {
     listings.push(listingId5);
   } else {
     listings.push(5);
   }
-  if (listingId6 < i || listingId6 > 0) {
+  if (i > 13) {
     listings.push(listingId6);
   } else {
     listings.push(6);
   }
-  if (listingId7 < i || listingId7 > 0) {
+  if (i > 13) {
     listings.push(listingId7);
   } else {
     listings.push(7);
   }
-  if (listingId8 < i || listingId8 > 0) {
+  if (i > 13) {
     listings.push(listingId8);
   } else {
     listings.push(8);
   }
-  if (listingId9 < i || listingId9 > 0) {
+  if (i > 13) {
     listings.push(listingId9);
   } else {
     listings.push(9);
   }
-  if (listingId10 < i || listingId10 > 0) {
+  if (i > 13) {
     listings.push(listingId10);
   } else {
     listings.push(10);
   }
-  if (listingId11 < i || listingId11 > 0) {
+  if (i > 13) {
     listings.push(listingId11);
   } else {
     listings.push(11);
   }
-  if (listingId12 < i || listingId12 > 0) {
+  if (i > 13) {
     listings.push(listingId12);
   } else {
     listings.push(12);

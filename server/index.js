@@ -4,6 +4,7 @@ const compression = require('compression');
 const expressStaticGzip = require('express-static-gzip');
 const model = require('../db/model.js');
 const postgres = require('../db/PostgreSQL/index.js');
+require('newrelic');
 
 // what to put into url: before my changes
 // http://localhost:3004/rooms/5/

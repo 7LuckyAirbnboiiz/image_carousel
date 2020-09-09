@@ -1,4 +1,6 @@
 /* eslint-disable array-callback-return */
+
+// TODO: add Pool for optimization
 const { Client } = require('pg');
 const Listing = require('./index.js');
 // const conString = require('./PostgreSQL/postgresConfig.js');
@@ -6,8 +8,6 @@ const Listing = require('./index.js');
 // const client = new Client({
 //   connectionString: conString,
 // });
-
-
 
 // client.connect();
 // client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
