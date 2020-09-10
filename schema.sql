@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS properties;
 
 CREATE TABLE IF NOT EXISTS properties(
   property_id SERIAL PRIMARY KEY,
-  -- listingId SERIAL PRIMARY KEY NOT NULL,
   img VARCHAR (100) NOT NULL,
   superhost BOOLEAN NOT NULL,
   was_liked BOOLEAN NOT NULL,
@@ -37,10 +36,6 @@ CREATE TABLE IF NOT EXISTS property_listings (
   listing_id INTEGER,
   FOREIGN KEY (property_id) REFERENCES properties(property_id) ON UPDATE CASCADE,
   FOREIGN KEY (listing_id) REFERENCES properties(property_id) ON UPDATE CASCADE
-  -- PRIMARY KEY (propertyId, listingID),
-  -- FOREIGN KEY (propertyId) REFERENCES property(propertyId), ON UPDATE CASCADE,
-  -- ON DELETE instead?
-  -- FOREIGN KEY (listingId) REFERENCES listings(listingId) ON UPDATE CASCADE,
 );
 
 -- CREATE TABLE propertyListings (
