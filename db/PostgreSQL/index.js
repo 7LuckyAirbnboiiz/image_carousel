@@ -21,7 +21,7 @@ module.exports = {
   getListings: (propertyId, callback) => {
     // client.connect();
     client.query(`SELECT * FROM properties WHERE property_id IN(SELECT listing_id FROM property_listings WHERE property_id = ${propertyId})`, (err, res) => {
-      console.log('getListings for Postgres (kind of) working');
+      console.log('getListings for Postgres working');
       if (err) {
         console.log('error in postgres db side');
         callback(err, null);

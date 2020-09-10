@@ -1,8 +1,8 @@
 /* eslint-disable array-callback-return */
 
 // TODO: add Pool for optimization
-const { Client } = require('pg');
-const Listing = require('./index.js');
+// const { Client } = require('pg');
+// const Listing = require('./index.js');
 // const conString = require('./PostgreSQL/postgresConfig.js');
 
 // const client = new Client({
@@ -22,18 +22,18 @@ const Listing = require('./index.js');
 //   client.end();
 // });
 
-module.exports = {
-  getListings: (callback) => {
-    Listing.find((error, listings) => {
-      if (error) {
-        console.log('cannot search database');
-        callback(error);
-      } else {
-        console.log('database searched');
-        callback(null, listings);
-      }
-    });
-  },
+// module.exports = {
+//   getListings: (callback) => {
+//     Listing.find((error, listings) => {
+//       if (error) {
+//         console.log('cannot search database');
+//         callback(error);
+//       } else {
+//         console.log('database searched');
+//         callback(null, listings);
+//       }
+//     });
+//   },
 
   // create listing
 
@@ -56,4 +56,4 @@ module.exports = {
 
   // delete listing
 
-};
+// };

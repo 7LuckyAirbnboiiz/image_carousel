@@ -3,7 +3,7 @@ const argv = require('yargs').argv;
 
 // can definetly refactor all of these csv writes
 
-const lines = argv.lines || 10000000;
+const lines = argv.lines || 10000001;
 const filename1 = argv.output || 'propertyListings1.csv';
 const filename2 = argv.output || 'propertyListings2.csv';
 const filename3 = argv.output || 'propertyListings3.csv';
@@ -127,7 +127,7 @@ const createPropertyListing = (i) => {
 };
 
 const startWriting1 = (writeStream, encoding, done) => {
-  let i = 10000000;
+  let i = 10000001;
   function writing() {
     let canWrite = true;
     do {
@@ -322,66 +322,66 @@ const startWriting10 = (writeStream, encoding, done) => {
     do {
       i -= 1;
       const propertyListing = createPropertyListing(i);
-      if (i === 0) {
+      if (i === 1) {
         writeStream.write(propertyListing, encoding, done);
       } else {
         // writeStream.write(propertyListing, encoding);
         canWrite = writeStream.write(propertyListing, encoding);
       }
-    } while (i > 0 && canWrite);
-    if (i > 0 && !canWrite) {
+    } while (i > 1 && canWrite);
+    if (i > 1 && !canWrite) {
       writeStream.once('drain', writing);
     }
   }
   writing();
 };
 
-stream1.write('property_id, property_listing\n');
+stream1.write('property_id, listing_id\n');
 startWriting1(stream1, 'utf-8', () => {
   stream1.end();
 });
 
-stream2.write('property_id, property_listing\n');
+stream2.write('property_id, listing_id\n');
 startWriting2(stream2, 'utf-8', () => {
   stream2.end();
 });
 
-stream3.write('property_id, property_listing\n');
+stream3.write('property_id, listing_id\n');
 startWriting3(stream3, 'utf-8', () => {
   stream3.end();
 });
 
-stream4.write('property_id, property_listing\n');
+stream4.write('property_id, listing_id\n');
 startWriting4(stream4, 'utf-8', () => {
   stream4.end();
 });
 
-stream5.write('property_id, property_listing\n');
+stream5.write('property_id, listing_id\n');
 startWriting5(stream5, 'utf-8', () => {
   stream5.end();
 });
 
-stream6.write('property_id, property_listing\n');
+stream6.write('property_id, listing_id\n');
 startWriting6(stream6, 'utf-8', () => {
   stream6.end();
 });
 
-stream7.write('property_id, property_listing\n');
+stream7.write('property_id, listing_id\n');
 startWriting7(stream7, 'utf-8', () => {
   stream7.end();
 });
 
-stream8.write('property_id, property_listing\n');
+stream8.write('property_id, listing_id\n');
 startWriting8(stream8, 'utf-8', () => {
   stream8.end();
 });
 
-stream9.write('property_id, property_listing\n');
+stream9.write('property_id, listing_id\n');
 startWriting9(stream9, 'utf-8', () => {
   stream9.end();
 });
 
-stream10.write('property_id, property_listing\n');
+stream10.write('property_id, listing_id\n');
 startWriting10(stream10, 'utf-8', () => {
   stream10.end();
 });
