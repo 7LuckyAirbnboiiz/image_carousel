@@ -6,13 +6,13 @@ const { Client } = require('pg');
 
 // const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
 
-// const conString = 'postgres://pickAUserName:PickAPassword@54.153.73.47:5432/listing';
+const conString = 'postgres://pickAUserName:PickAPassword@54.153.73.47:5432/listing';
 
 // const connectionString = 'postgres://username:password@host:port/database';
 
 const client = new Client({
   // for using a username and password
-  // connectionString: conString,
+  connectionString: conString,
 });
 
 client.connect();
