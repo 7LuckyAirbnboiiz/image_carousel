@@ -70,11 +70,51 @@ class App extends React.Component {
   }
 
   getListings() {
-    axios.get('/suggestedListings')
+    // original axios get request to mongodb
+
+    // axios.get('/suggestedListings')
+    //   .then((response) => {
+    //     const suggestedListings = response.data;
+    //     console.log(suggestedListings);
+    //     this.setState({ suggestedListings, isLoading: false });
+    //     this.renderPage(1);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    // my get request to postgreSQL database
+    const id = window.location.pathname.split('/')[2];
+    axios.get(`/listing/${id}`)
+
       .then((response) => {
-        const suggestedListings = response.data;
-        console.log(suggestedListings);
-        this.setState({ suggestedListings, isLoading: false });
+        const suggestedListings = [];
+        for (let i = 0; i < response.data.rows.length; i += 1) {
+          const listing = response.data.rows[i];
+          const newDescription = listing.descrip.slice(1, listing.descrip.length - 1);
+          const newRoomType = listing.type_of_room.slice(1, listing.type_of_room.length - 1);
+          const newImage = listing.img.slice(1, listing.img.length - 1);
+          const newListingFormat = {
+            avgRating: listing.avg_rating,
+            description: newDescription,
+            image: newImage,
+            numberOfRatings: listing.number_of_ratings,
+            rate: listing.price,
+            superhost: listing.superhost,
+            wasLiked: listing.was_liked,
+            id: listing.id,
+          };
+          if (listing.number_of_beds === 1) {
+            newListingFormat.title = `${newRoomType} · ${listing.number_of_beds} bed`;
+          } else {
+            newListingFormat.title = `${newRoomType} · ${listing.number_of_beds} beds`;
+          }
+          suggestedListings.push(newListingFormat);
+        }
+        this.setState({
+          suggestedListings,
+          isLoading: false,
+        });
         this.renderPage(1);
       })
       .catch((error) => {

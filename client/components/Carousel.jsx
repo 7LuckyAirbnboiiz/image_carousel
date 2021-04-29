@@ -12,6 +12,8 @@ const Item = styled.li`
   margin: 0px 2px;
   max-width: 25%;
   flex: 0 0 25%;
+  // added some picture size adjustments because they were overlapping
+  min-width: 260px;
 `;
 
 const List = styled.ul`
